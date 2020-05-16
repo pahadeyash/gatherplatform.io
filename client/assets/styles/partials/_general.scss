@@ -1,0 +1,18 @@
+//general colors
+$color-1: purple;
+
+
+
+//general
+
+html,
+body,
+#app-wrapper {
+  height: 100%;
+  margin: 0;
+}
+
+#app-wrapper {
+  font-family: $color-1;
+  // background: $color-3;
+}
