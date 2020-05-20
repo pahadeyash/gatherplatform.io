@@ -11,7 +11,7 @@ const Navbar = () => {
         <div id="navbar-wrapper">
             <div id="nav-selection-container">
 
-                <A href="/Explore" className="nav-selection" >
+                <A href="/" className="nav-selection" >
                     Explore
             </A>
 
