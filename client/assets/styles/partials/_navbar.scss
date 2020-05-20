@@ -1,0 +1,19 @@
+#navbar-wrapper {
+    background: $color-4;
+    height: 5%;
+}
+
+#nav-selection-container {
+    height: 100%;
+    margin: auto auto;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-selection {
+    text-decoration: none;
+    margin: auto auto;
+    height: auto;
+    color: black;
+}
