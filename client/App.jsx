@@ -1,12 +1,22 @@
 import React, { useState } from "react";
+import { useRoutes, A } from "hookrouter";
+import Routes from "./router/Routes.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 function App() {
-    return (
-        <div id="app-wrapper">Gather Platform
+  //pulling in defined routes within Routes.jsx
+  //the selected route will be displayed through routeResult in return statement below
+  const routeResult = useRoutes(Routes);
 
-        <div id="home-wrapper">Home</div>
-        </div>
-    )
+  return (
+    <div id="app-wrapper">
+      Gather Platform
+
+      {routeResult}
+
+      <Navbar />
+    </div>
+  );
 }
 
 export default App;

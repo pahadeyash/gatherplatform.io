@@ -1,15 +1,19 @@
 //general colors
 $color-1: white;
 $color-2: pink;
+$color-3: orange;
+$color-4: rgb(236, 239, 241);
 
 
-
-//general
+//general scss 
 
 html,
 body,
 #app-wrapper {
-  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 100vh;
   margin: 0;
   background: $color-1;
   text-align: center;
