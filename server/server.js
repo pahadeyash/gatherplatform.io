@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const homeRouter = require('./routes/home');
 
 //mongodb configs
+//key-value passed through mongoose.connect are configs to fix deprecated issues
 const mongoose = require("mongoose");
 const mongoURI =
     "mongodb+srv://support@gatherplatform.com:Stillwerise2020@cluster0-cyx5s.mongodb.net/test?retryWrites=true&w=majority";
