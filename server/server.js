@@ -26,6 +26,13 @@ mongoose.set("useCreateIndex", true);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+
+// Routes
+app.use("/api/users", users);
 app.use('/home', homeRouter);
 
 //error handler below
