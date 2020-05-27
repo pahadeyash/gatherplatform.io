@@ -13,7 +13,7 @@ const users = require("./routes/users");
 //key-value passed through mongoose.connect are configs to fix deprecated issues
 const mongoose = require("mongoose");
 const mongoURI =
-    "mongodb+srv://support@gatherplatform.com:Stillwerise2020@cluster0-cyx5s.mongodb.net/test?retryWrites=true&w=majority";
+    "mongodb+srv://gatherplatform:Stillwerise2020@cluster0-cyx5s.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

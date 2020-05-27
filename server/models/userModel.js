@@ -30,4 +30,4 @@ const usersModel = new Schema({
 })
 
 //exporting user model as User.(...action)
-module.exports = mongoose.model('Users', usersModel);
+module.exports = mongoose.model('User', usersModel);
