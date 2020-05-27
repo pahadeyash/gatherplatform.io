@@ -4,6 +4,10 @@ const path = require('path');
 const PORT = 3000;
 const bodyParser = require('body-parser');
 const homeRouter = require('./routes/home');
+const passport = require("passport");
+
+//load file dependencies
+const user = require("./routes/user");
 
 //mongodb configs
 //key-value passed through mongoose.connect are configs to fix deprecated issues
