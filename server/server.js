@@ -7,7 +7,7 @@ const homeRouter = require('./routes/home');
 const passport = require("passport");
 
 //load file dependencies
-const user = require("./routes/user");
+const users = require("./routes/users");
 
 //mongodb configs
 //key-value passed through mongoose.connect are configs to fix deprecated issues
@@ -33,6 +33,7 @@ require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", users);
+
 app.use('/home', homeRouter);
 
 //error handler below
