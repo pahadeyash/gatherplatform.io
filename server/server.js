@@ -4,12 +4,16 @@ const path = require('path');
 const PORT = 3000;
 const bodyParser = require('body-parser');
 const homeRouter = require('./routes/home');
+const passport = require("passport");
+
+//load file dependencies
+const users = require("./routes/users");
 
 //mongodb configs
 //key-value passed through mongoose.connect are configs to fix deprecated issues
 const mongoose = require("mongoose");
 const mongoURI =
-    "mongodb+srv://support@gatherplatform.com:Stillwerise2020@cluster0-cyx5s.mongodb.net/test?retryWrites=true&w=majority";
+    "mongodb+srv://gatherplatform:Stillwerise2020@cluster0-cyx5s.mongodb.net/test?retryWrites=true&w=majority";
 mongoose.connect(mongoURI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -21,6 +25,14 @@ mongoose.set("useCreateIndex", true);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Passport middleware
+app.use(passport.initialize());
+// Passport config
+require("./config/passport")(passport);
+
+// Routes
+app.use("/api/users", users);
 
 app.use('/home', homeRouter);
 
