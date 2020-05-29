@@ -33,13 +33,13 @@ app.use(cookieSession({
     keys: ['key1', 'key2']
 }));
 
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
+// const isLoggedIn = (req, res, next) => {
+//     if (req.user) {
+//         next();
+//     } else {
+//         res.sendStatus(401);
+//     }
+// }
 
 // Passport middleware
 app.use(passport.initialize());
@@ -57,26 +57,6 @@ app.use('/home', homeRouter);
 app.get('/', (req, res) => res.send('You are not logged in!'));
 
 app.get('/failed', (req, res) => res.send('You have failed to login!'));
-
-app.get('/good', isLoggedIn, (req, res) => {
-    res.send('Welcome mr ' + req.user)
-});
-
-// app.get('/google',
-//     passport.authenticate('google', { scope: ['profile', 'email'] }));
-
-// app.get('/google/callback',
-//     passport.authenticate('google', { failureRedirect: '/failed' }),
-//     function (req, res) {
-//         // Successful authentication, redirect home.
-//         res.redirect('/good');
-//     });
-
-// app.get('/logout', (req, res) => {
-//     req.session = null;
-//     req.logout();
-//     res.redirect('/');
-// })
 
 
 //error handler below

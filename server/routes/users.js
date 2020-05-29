@@ -3,6 +3,7 @@ const usersRouter = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
+const passport = require('passport');
 
 // Load input validation
 const validateRegisterInput = require("../validation/register");
@@ -10,6 +11,16 @@ const validateLoginInput = require("../validation/login");
 
 // Load User model
 const User = require("../models/userModel");
+
+//move to usersController 
+const isLoggedIn = (req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 
 // @route POST api/users/register
 // @desc Register user
@@ -96,22 +107,25 @@ usersRouter.post("/login", (req, res) => {
 });
 
 //route to hit for google oauth
-userRouter.get('/google',
+usersRouter.get('/google',
     passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 //invoked after user clicks on google account
-userRouter.get('/google/callback',
+usersRouter.get('/google/callback',
     passport.authenticate('google', { failureRedirect: '/failed' }),
     function (req, res) {
         // Successful authentication, redirect home.
-        res.redirect('/good');
+        console.log('hit google callback');
+        res.redirect('/home');
     });
 
 //hit anytime user logs out
-app.get('/logout', (req, res) => {
+usersRouter.get('/logout', (req, res) => {
     req.session = null;
     req.logout();
     res.redirect('/');
 })
+
+usersRouter.get('/failed', (req, res) => res.send('You have failed to login!'));
 
 module.exports = usersRouter;
