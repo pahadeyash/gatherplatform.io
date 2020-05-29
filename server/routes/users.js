@@ -95,4 +95,23 @@ usersRouter.post("/login", (req, res) => {
     });
 });
 
+//route to hit for google oauth
+userRouter.get('/google',
+    passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+//invoked after user clicks on google account
+userRouter.get('/google/callback',
+    passport.authenticate('google', { failureRedirect: '/failed' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        res.redirect('/good');
+    });
+
+//hit anytime user logs out
+app.get('/logout', (req, res) => {
+    req.session = null;
+    req.logout();
+    res.redirect('/');
+})
+
 module.exports = usersRouter;
