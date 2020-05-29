@@ -4,7 +4,8 @@ const path = require('path');
 const PORT = 3000;
 const bodyParser = require('body-parser');
 const homeRouter = require('./routes/home');
-const passport = require("passport");
+const passport = require('passport');
+const cookieSession = require('cookie-session');
 
 //load file dependencies
 const users = require("./routes/users");
@@ -26,8 +27,22 @@ mongoose.set("useCreateIndex", true);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(cookieSession({
+    name: 'tuto-session',
+    keys: ['key1', 'key2']
+}));
+
+const isLoggedIn = (req, res, next) =>{
+    if (req.user) {
+        next();
+    } else {
+        res.sendStatus(401);
+    }
+}
+
 // Passport middleware
 app.use(passport.initialize());
+app.use(passport.session());
 // Passport config
 require("./config/passport")(passport);
 
@@ -36,6 +51,30 @@ app.use("/api/users", users);
 
 app.use('/home', homeRouter);
 
+// google oauth routes
+
+app.get('/', (req, res) => res.send('You are not logged in!'));
+
+app.get('/failed', (req, res) => res.send('You have failed to login!'));
+
+app.get('/good', isLoggedIn, (req, res) => {
+    res.send('Welcome mr ' + req.user)});
+
+app.get('/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+app.get('/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/failed' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/good');
+  });
+
+  app.get('/logout', (req, res) => {
+      req.session = null;
+      req.logout();
+      res.redirect('/');
+  })
 //error handler below
 //error handler for improper route
 app.get("*", (req, res) => {
