@@ -8,7 +8,8 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 
 //load file dependencies
-const users = require("./routes/users");
+const usersRouter = require("./routes/users");
+const landingRouter = require("./routes/landing");
 
 //mongodb configs
 //key-value passed through mongoose.connect are configs to fix deprecated issues
@@ -33,31 +34,19 @@ app.use(cookieSession({
     keys: ['key1', 'key2']
 }));
 
-// const isLoggedIn = (req, res, next) => {
-//     if (req.user) {
-//         next();
-//     } else {
-//         res.sendStatus(401);
-//     }
-// }
-
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
 // Passport config
 require("./config/passport")(passport);
 
 // Routes
-app.use("/api/users", users);
+app.use("/api/users", usersRouter);
 
 app.use('/home', homeRouter);
 
-// google oauth routes
-
-app.get('/', (req, res) => res.send('You are not logged in!'));
-
-app.get('/failed', (req, res) => res.send('You have failed to login!'));
-
+app.use('/', landingRouter);
 
 //error handler below
 //error handler for improper route

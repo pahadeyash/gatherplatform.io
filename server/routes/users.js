@@ -12,16 +12,6 @@ const validateLoginInput = require("../validation/login");
 // Load User model
 const User = require("../models/userModel");
 
-//move to usersController 
-const isLoggedIn = (req, res, next) => {
-    if (req.user) {
-        next();
-    } else {
-        res.sendStatus(401);
-    }
-}
-
-
 // @route POST api/users/register
 // @desc Register user
 // @access Public
