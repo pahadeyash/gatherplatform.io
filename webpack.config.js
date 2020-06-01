@@ -26,7 +26,8 @@ module.exports = {
             '/':
             {
                 target: 'http://localhost:3000',
-                secure: false
+                secure: false,
+                changeOrigin: true
             }
         },
         filename: 'bundle.js',

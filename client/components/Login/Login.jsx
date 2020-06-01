@@ -21,26 +21,41 @@ function Login() {
       <form method="POST" action="/api/users/login"
       //  onSubmit={handleSubmit} 
       >
-        <h1>Log in</h1>
+        <h1 id="login-header">Login</h1>
 
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={handleLoginEmailChange}
-        />
-        <br />
+        <div id="input-header-container">
+          Email
+        </div>
 
-        <label>Password</label>
-        <input
-          type="text"
-          name="password"
-          onChange={handleLoginPasswordChange}
-        />
-        <br />
+        <div id="input-field-container">
+          <input
+            className="input-field"
+            type="text"
+            name="email"
+            placeholder="Enter email"
+            onChange={handleLoginEmailChange}
+          />
+        </div>
 
-        <button type="submit">Log in</button>
-      </form></div>
+        <div id="input-header-container">
+          Password
+        </div>
+        <div id="input-field-container">
+          <input
+            className="input-field"
+            type="text"
+            name="password"
+            placeholder="Enter password"
+            onChange={handleLoginPasswordChange}
+          />
+        </div>
+
+        <div id="single-button-container">
+          <button id="login-button" type="submit">Sign in</button>
+        </div>
+      </form>
+
+    </div>
   );
 }
 export default Login;
