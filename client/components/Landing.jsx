@@ -1,4 +1,5 @@
 import React from "react";
+import { A } from "hookrouter";
 
 function Landing() {
     return (
@@ -9,14 +10,14 @@ function Landing() {
 
             <div id="buttons-container">
                 <div id="landing-login-button-container">
-                    <button id="landing-login-button">
+                    <A href="/api/users/login" id="landing-login-button" className="nav-selection">
                         Login
-                </button>
+                </A>
                 </div>
 
-                <button id="landing-signup-button">
+                <A href="/api/users/signup" id="landing-signup-button" className="nav-selection">
                     Sign Up
-            </button>
+            </A>
             </div >
         </div >
     );

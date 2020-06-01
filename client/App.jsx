@@ -13,7 +13,7 @@ function App() {
 
       {routeResult}
 
-      <Navbar />
+      {/* <Navbar /> */}
     </div>
   );
 }
