@@ -17,11 +17,19 @@ module.exports = {
         hot: true,
         publicPath: '/',
         inline: true,
+        // proxy: {
+        //     "*": "http://[::1]:8080"
+        //     // "secure": false,
+        //     // "changeOrigin": true
+        // }
         proxy: {
-            "*": "http://[::1]:8080"
-            // "secure": false,
-            // "changeOrigin": true
-        }
+            '/':
+            {
+                target: 'http://localhost:3000',
+                secure: false
+            }
+        },
+        filename: 'bundle.js',
     },
     plugins: [
         new HtmlWebpackPlugin({

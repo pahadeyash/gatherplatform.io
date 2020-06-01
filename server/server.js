@@ -10,6 +10,7 @@ const cookieSession = require('cookie-session');
 //load file dependencies
 const usersRouter = require("./routes/users");
 const landingRouter = require("./routes/landing");
+require("./config/passport")(passport);
 
 //mongodb configs
 //key-value passed through mongoose.connect are configs to fix deprecated issues
@@ -34,12 +35,18 @@ app.use(cookieSession({
     keys: ['key1', 'key2']
 }));
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:8080"); // update to match the domain you will make the request from
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Passport config
-require("./config/passport")(passport);
 
 // Routes
 app.use("/api/users", usersRouter);

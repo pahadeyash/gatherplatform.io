@@ -17,6 +17,7 @@ const User = require("../models/userModel");
 // @access Public
 usersRouter.post("/register", (req, res) => {
     // Form validation
+    console.log('req.body: ', req.body)
     const { errors, isValid } = validateRegisterInput(req.body);
     // Check validation
     if (!isValid) {
@@ -117,15 +118,15 @@ usersRouter.get('/logout', (req, res) => {
 })
 
 usersRouter.get('/facebook',
-  passport.authenticate('facebook'));
+    passport.authenticate('facebook'));
 
 usersRouter.get('/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/failed' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    console.log('hit facebook callback')
-    res.redirect('/home');
-  });
+    passport.authenticate('facebook', { failureRedirect: '/failed' }),
+    function (req, res) {
+        // Successful authentication, redirect home.
+        console.log('hit facebook callback')
+        res.redirect('/home');
+    });
 
 usersRouter.get('/failed', (req, res) => res.send('You have failed to login!'));
 
