@@ -116,6 +116,17 @@ usersRouter.get('/logout', (req, res) => {
     res.redirect('/');
 })
 
+usersRouter.get('/facebook',
+  passport.authenticate('facebook'));
+
+usersRouter.get('/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/failed' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    console.log('hit facebook callback')
+    res.redirect('/home');
+  });
+
 usersRouter.get('/failed', (req, res) => res.send('You have failed to login!'));
 
 module.exports = usersRouter;

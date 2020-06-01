@@ -1,5 +1,6 @@
 const JwtStrategy = require("passport-jwt").Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy =  require('passport-facebook').Strategy;
 const passport = require('passport');
 const ExtractJwt = require("passport-jwt").ExtractJwt;
 const mongoose = require("mongoose");
@@ -47,4 +48,17 @@ passport.use(new GoogleStrategy({
     // });
     return done(null, profile);
   }
+));
+
+passport.use(new FacebookStrategy({
+  clientID: "692620071590680",
+  clientSecret: "cd0deae2a510613b0a7f423ddb64b8b5",
+  callbackURL: "http://localhost:3000/api/users/facebook/callback"
+},
+function(accessToken, refreshToken, profile, done) {
+  // User.findOrCreate({ facebookId: profile.id }, function (err, user) {
+  //   return cb(err, user);
+  // });
+  return done(null, profile);
+}
 ));
