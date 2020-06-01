@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 function Signup() {
     // const [name, setName] = useState('');
-    // const [password, password] = useState('');
-    // const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
 
+
+    //function to update password in state everytime change happens
+    const handlePasswordChange = e => {
+        setPassword(e.target.value);
+        console.log('this is current password in state: ', password);
+    }
+
+    const handleEmailChange = e => {
+        setEmail(e.target.value);
+        console.log('this is the current email in state: ', email);
+    }
 
     return (
         <div id="signup-wrapper">
@@ -17,7 +28,7 @@ function Signup() {
                 <input
                     type="text"
                     name="email"
-                // onChange={handleChange}
+                    onChange={handleEmailChange}
                 // value={values.name}
                 />
                 <br />
@@ -26,7 +37,7 @@ function Signup() {
                 <input
                     type="text"
                     name="password"
-                // onChange={handleChange}
+                    onChange={handlePasswordChange}
                 // value={values.lastName}
                 />
                 <br />
@@ -35,7 +46,7 @@ function Signup() {
                 <input
                     type="text"
                     name="password"
-                // onChange={handleChange}
+                    onChange={handlePasswordChange}
                 // value={values.age}
                 />
                 <br />
