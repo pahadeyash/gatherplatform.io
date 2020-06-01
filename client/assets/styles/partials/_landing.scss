@@ -1,0 +1,32 @@
+#landing-wrapper{
+    height: 100vh;
+    color: $font-color-main;
+}
+
+#landing-header{
+    font-size: 40px;
+    font-weight: 900;
+    padding-top: 70%;
+}
+
+#buttons-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20% 35%;
+}
+
+#landing-login-button-container{
+    border: 2px solid $font-color-main;
+    border-radius: 5px;
+    background: white;
+}
+
+#landing-login-button {
+    font-size: 15px;
+    padding: 7px;
+}
+
+#landing-signup-button {
+    font-size: 15px;
+    margin-top: 20px;
+}

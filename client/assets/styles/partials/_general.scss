@@ -1,12 +1,13 @@
 //general colors
-$color-1: white;
+$color-1: #F5A390;
 $color-2: pink;
 $color-3: orange;
 $color-4: rgb(236, 239, 241);
 
+//colorway for font
+$font-color-main: $color-1;
 
 //general scss 
-
 html,
 body,
 #app-wrapper {
@@ -15,7 +16,6 @@ body,
   left: 0;
   height: 100vh;
   margin: 0;
-  background: $color-1;
   text-align: center;
 }
 

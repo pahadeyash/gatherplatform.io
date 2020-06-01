@@ -10,7 +10,6 @@ function App() {
 
   return (
     <div id="app-wrapper">
-      Gather Platform
 
       {routeResult}
 
