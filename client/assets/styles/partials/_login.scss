@@ -18,6 +18,7 @@
     border-radius: 5px;
     height: 40px;
     font-size: 14px;
+    border: 0.5px solid white;
 }
 
 #input-field-container{
@@ -33,9 +34,64 @@
     display: flex;
     flex-direction: row;
     text-align: center;
-    padding: 7px 0;
+    padding: 7px 30%;
+    font-size: 10px;
 }
 
 .input-field {
     width: 100%;
+}
+
+#or-container {
+    padding: 10px 0;
+}
+
+#or-text{
+    overflow: hidden;
+    text-align: center;
+    opacity: 0.6;
+}
+
+
+#or-text:before,
+#or-text:after {
+  opacity: 0.6;
+  background-color: $font-color-minor;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+#or-text:before {
+  right: 1em;
+  margin-left: -50%;
+}
+
+#or-text:after {
+  left: 1em;
+  margin-right: -50%;
+}
+
+#oauth-container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+}
+
+#oauth-button {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 48px;
+    width: 40%;
+    text-align: center;
+    margin: auto auto;
+}
+
+#alternate-link-text {
+    margin: auto auto;
 }

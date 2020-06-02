@@ -58,13 +58,40 @@ function Login() {
         </div>
       </form>
 
-      <div id="register-section">
-        Don't have an account?
-
-        <A href="/api/users/signup">
-          Sign Up
-            </A>
+      <div id="or-container">
+        <div id="or-text">
+          OR
+        </div>
       </div>
+
+      <div id="oauth-container">
+
+        <div id="oauth-button">
+          <a href="/api/users/google" className="nav-selection"  >
+            Google
+          </a>
+        </div>
+
+        <div id="oauth-button">
+          <a href="/api/users/facebook" className="nav-selection"  >
+            Facebook
+          </a>
+        </div>
+
+      </div>
+
+      <div id="register-section">
+
+        <div id="alternate-link-text">
+          Don't have an account?
+
+        <A href="/api/users/register">
+            Sign Up
+          </A>
+
+        </div>
+      </div>
+
     </div>
   );
 }

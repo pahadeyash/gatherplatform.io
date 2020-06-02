@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { A } from "hookrouter";
 
 function Signup() {
     const [name, setName] = useState('');
@@ -100,7 +101,43 @@ function Signup() {
                     <button id="signup-button" type="submit">Sign up</button>
                 </div>
 
-            </form></div>
+            </form>
+
+            <div id="or-container">
+                <div id="or-text">
+                    OR
+                </div>
+            </div>
+
+            <div id="oauth-container">
+
+                <div id="oauth-button">
+                    <a href="/api/users/google" className="nav-selection"  >
+                        Google
+                    </a>
+                </div>
+
+                <div id="oauth-button">
+                    <a href="/api/users/facebook" className="nav-selection"  >
+                        Facebook
+                    </a>
+                </div>
+
+            </div>
+
+        <div id="register-section">
+        
+            <div id="alternate-link-text">
+                Have an account? 
+  
+            <A href="/api/users/login">
+                Log in
+            </A>
+
+            </div>
+        </div>
+
+    </div>
     );
 }
 
