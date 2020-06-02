@@ -44,6 +44,7 @@ function Signup() {
 
                 <div id="input-field-container">
                     <input
+                        style={{ width: "100%" }}
                         type="text"
                         name="name"
                         placeholder="Enter name"
@@ -57,6 +58,7 @@ function Signup() {
 
                 <div id="input-field-container">
                     <input
+                        style={{ width: "100%" }}
                         type="text"
                         name="email"
                         placeholder="Enter email"
@@ -69,7 +71,8 @@ function Signup() {
                 </div>
                 <div id="input-field-container">
                     <input
-                        type="text"
+                        style={{ width: "100%" }}
+                        type="password"
                         name="password"
                         placeholder="Enter password"
                         onChange={handlePasswordChange}
@@ -81,7 +84,8 @@ function Signup() {
                 </div>
                 <div id="input-field-container">
                     <input
-                        type="text"
+                        style={{ width: "100%" }}
+                        type="password"
                         name="password2"
                         placeholder="Re-enter password"
                         onChange={handlePassword2Change}
@@ -93,7 +97,7 @@ function Signup() {
                 </div>
 
                 <div id="single-button-container">
-                    <button id="signup-button" type="submit">Sign in</button>
+                    <button id="signup-button" type="submit">Sign up</button>
                 </div>
 
             </form></div>

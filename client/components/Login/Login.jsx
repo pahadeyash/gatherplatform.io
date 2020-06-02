@@ -30,6 +30,7 @@ function Login() {
 
         <div id="input-field-container">
           <input
+            style={{ width: "100%" }}
             className="input-field"
             type="text"
             name="email"
@@ -43,8 +44,9 @@ function Login() {
         </div>
         <div id="input-field-container">
           <input
+            style={{ width: "100%" }}
             className="input-field"
-            type="text"
+            type="password"
             name="password"
             placeholder="Enter password"
             onChange={handleLoginPasswordChange}

@@ -11,6 +11,7 @@ const cookieSession = require('cookie-session');
 const usersRouter = require("./routes/users");
 const landingRouter = require("./routes/landing");
 require("./config/passport")(passport);
+// const passport = require("./config/passport");
 
 //mongodb configs
 //key-value passed through mongoose.connect are configs to fix deprecated issues
@@ -56,10 +57,25 @@ app.use('/home', homeRouter);
 app.use('/', landingRouter);
 
 //error handler below
+
+//to allow for page to render due to client-side rendering with react router
+// app.get('/*', function (req, res) {
+//     res.sendFile(path.join(__dirname, "../../public/index.html"), function (err) {
+//         if (err) {
+//             res.status(500).send(err)
+//         }
+//     })
+// })
+
+
 //error handler for improper route
+//change once near deployment
 app.get("*", (req, res) => {
-    res.sendStatus(404);
+    res.redirect('/');
+    // res.sendStatus(404);
 });
+
+
 
 //global error handler 
 app.get((err, req, res, next) => {
