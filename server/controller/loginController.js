@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const passport = require('passport');
-
+const keys = require("../config/keys");
 const User = require("../models/userModel");
 const loginController = {};
 // Load input validation

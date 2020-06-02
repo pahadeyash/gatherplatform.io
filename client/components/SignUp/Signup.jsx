@@ -98,7 +98,7 @@ function Signup() {
                 </div>
 
                 <div id="single-button-container">
-                    <button id="signup-button" type="submit">Sign up</button>
+                    <button id="login-button" type="submit">Sign up</button>
                 </div>
 
             </form>
