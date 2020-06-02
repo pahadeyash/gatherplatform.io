@@ -6,7 +6,8 @@ import Landing from "../components/Landing.jsx";
 
 //all routes for navbar will be defined here
 const routes = {
-    "/": () => <Landing />,
+    "/": () => <Explore />,
+    "/landing": () => <Landing />,
     "/api/users/login": () => <Login />,
     "/api/users/register": () => <Signup />
 };

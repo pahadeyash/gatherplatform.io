@@ -15,13 +15,8 @@ const Navbar = () => {
                     Explore
             </A>
 
-                <A href="/api/users/login" className="nav-selection"  >
+                <A href="/landing" className="nav-selection"  >
                     Login
-            </A>
-
-
-                <A href="/api/users/register" className="nav-selection"  >
-                    Signup
             </A>
 
             </div>
