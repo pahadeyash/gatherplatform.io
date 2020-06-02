@@ -35,41 +35,67 @@ function Signup() {
             <form method="POST" action="/api/users/register"
             //  onSubmit={handleSubmit} 
             >
-                <h1>Sign Up</h1>
+                <h1 id="signup-header">Sign Up</h1>
 
 
-                <label>Name</label>
-                <input
-                    type="text"
-                    name="name"
-                    onChange={handleNameChange}
-                />
-                <br />
+                <div id="input-header-container">
+                    Name
+                </div>
 
-                <label>Email</label>
-                <input
-                    type="text"
-                    name="email"
-                    onChange={handleEmailChange}
-                />
-                <br />
+                <div id="input-field-container">
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter name"
+                        onChange={handleNameChange}
+                    />
+                </div>
 
-                <label>Password</label>
-                <input
-                    type="text"
-                    name="password"
-                    onChange={handlePasswordChange}
-                />
-                <br />
+                <div id="input-header-container">
+                    Email
+                </div>
 
-                <label>Confirm Password</label>
-                <input
-                    type="text"
-                    name="password2"
-                    onChange={handlePassword2Change}
-                />
-                <br />
-                <button type="submit">Sign up</button>
+                <div id="input-field-container">
+                    <input
+                        type="text"
+                        name="email"
+                        placeholder="Enter email"
+                        onChange={handleEmailChange}
+                    />
+                </div>
+
+                <div id="input-header-container">
+                    Password
+                </div>
+                <div id="input-field-container">
+                    <input
+                        type="text"
+                        name="password"
+                        placeholder="Enter password"
+                        onChange={handlePasswordChange}
+                    />
+                </div>
+
+                <div id="input-header-container">
+                    Confirm Password
+                </div>
+                <div id="input-field-container">
+                    <input
+                        type="text"
+                        name="password2"
+                        placeholder="Re-enter password"
+                        onChange={handlePassword2Change}
+                    />
+                </div>
+
+                <div id="terms-container">
+                    By signing up, you are accepting our terms & conditions
+                </div>
+
+                <div id="single-button-container">
+                    <button id="signup-button" type="submit">Sign in</button>
+                </div>
+
             </form></div>
     );
 }

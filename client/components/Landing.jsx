@@ -15,7 +15,7 @@ function Landing() {
                 </A>
                 </div>
 
-                <A href="/api/users/signup" id="landing-signup-button" className="nav-selection">
+                <A href="/api/users/register" id="landing-signup-button" className="nav-selection">
                     Sign Up
             </A>
             </div >
