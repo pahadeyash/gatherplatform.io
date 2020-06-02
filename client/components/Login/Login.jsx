@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { A } from "hookrouter";
 
 function Login() {
   const [loginPassword, setLoginPassword] = useState('');
@@ -55,6 +56,13 @@ function Login() {
         </div>
       </form>
 
+      <div id="register-section">
+        Don't have an account?
+
+        <A href="/api/users/signup">
+          Sign Up
+            </A>
+      </div>
     </div>
   );
 }
