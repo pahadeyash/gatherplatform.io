@@ -10,7 +10,7 @@ const cookieSession = require('cookie-session');
 //load file dependencies
 const loginRouter = require("./routes/login");
 const signupRouter = require("./routes/signup");
-const usersRouter = require("./routes/users");
+const oauthRouter = require("./routes/oauth");
 const landingRouter = require("./routes/landing");
 require("./config/passport")(passport);
 // const passport = require("./config/passport");
@@ -56,7 +56,7 @@ app.use("/api/users/login", loginRouter);
 
 app.use("/api/users/register", signupRouter);
 
-app.use("/api/users/", usersRouter);
+app.use("/api/users/", oauthRouter);
 
 app.use('/home', homeRouter);
 

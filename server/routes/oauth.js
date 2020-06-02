@@ -1,5 +1,5 @@
 const express = require("express");
-const usersRouter = express.Router();
+const oauth = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const keys = require("../config/keys");
@@ -98,11 +98,11 @@ const User = require("../models/userModel");
 // });
 
 //route to hit for google oauth
-usersRouter.get('/google',
+oauth.get('/google',
     passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 //invoked after user clicks on google account
-usersRouter.get('/google/callback',
+oauth.get('/google/callback',
     passport.authenticate('google', { failureRedirect: '/failed' }),
     function (req, res) {
         // Successful authentication, redirect home.
@@ -111,16 +111,16 @@ usersRouter.get('/google/callback',
     });
 
 //hit anytime user logs out
-usersRouter.get('/logout', (req, res) => {
+oauth.get('/logout', (req, res) => {
     req.session = null;
     req.logout();
     res.redirect('/');
 })
 
-usersRouter.get('/facebook',
+oauth.get('/facebook',
     passport.authenticate('facebook'));
 
-usersRouter.get('/facebook/callback',
+oauth.get('/facebook/callback',
     passport.authenticate('facebook', { failureRedirect: '/failed' }),
     function (req, res) {
         // Successful authentication, redirect home.
@@ -128,6 +128,6 @@ usersRouter.get('/facebook/callback',
         res.redirect('/home');
     });
 
-usersRouter.get('/failed', (req, res) => res.send('You have failed to login!'));
+oauth.get('/failed', (req, res) => res.send('You have failed to login!'));
 
-module.exports = usersRouter;
+module.exports = oauth;
