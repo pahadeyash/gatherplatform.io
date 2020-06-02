@@ -1,4 +1,97 @@
 #login-wrapper {
-    background: $color-3;
-    height: 50%;
+    margin: 36px 24px 24px 24px;
+}
+
+#login-header {
+    padding: 20% 0 20% 0;
+}
+
+#input-header-container {
+    padding: 7px 0;
+}
+
+
+#login-button {
+    color: white;
+    background: $font-color-main;
+    width: 100%;
+    border-radius: 5px;
+    height: 40px;
+    font-size: 14px;
+    border: 0.5px solid white;
+}
+
+#input-field-container{
+    border-bottom: 1px solid $font-color-main;
+    margin-bottom: 7px;
+}
+
+#single-button-container{
+    padding: 10px 0;
+}
+
+#register-section {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    padding: 10px 30%;
+    font-size: 10px;
+}
+
+.input-field {
+    width: 100%;
+}
+
+#or-container {
+    padding: 10px 0;
+}
+
+#or-text{
+    overflow: hidden;
+    text-align: center;
+    opacity: 0.6;
+}
+
+
+#or-text:before,
+#or-text:after {
+  opacity: 0.6;
+  background-color: $font-color-minor;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+#or-text:before {
+  right: 1em;
+  margin-left: -50%;
+}
+
+#or-text:after {
+  left: 1em;
+  margin-right: -50%;
+}
+
+#oauth-container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 0;
+}
+
+#oauth-button {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 48px;
+    width: 40%;
+    text-align: center;
+    margin: auto auto;
+}
+
+#alternate-link-text {
+    margin: auto auto;
 }

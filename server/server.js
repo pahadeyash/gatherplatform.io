@@ -8,8 +8,12 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 
 //load file dependencies
-const usersRouter = require("./routes/users");
+const loginRouter = require("./routes/login");
+const signupRouter = require("./routes/signup");
+const oauthRouter = require("./routes/oauth");
 const landingRouter = require("./routes/landing");
+require("./config/passport")(passport);
+// const passport = require("./config/passport");
 
 //mongodb configs
 //key-value passed through mongoose.connect are configs to fix deprecated issues
@@ -34,25 +38,50 @@ app.use(cookieSession({
     keys: ['key1', 'key2']
 }));
 
+app.use(function (req, res, next) {
+    res.header("Access-Control-Allow-Origin", "http://localhost:8080"); // update to match the domain you will make the request from
+    res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+});
+
 // Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Passport config
-require("./config/passport")(passport);
-
 // Routes
-app.use("/api/users", usersRouter);
+app.use("/api/users/login", loginRouter);
+
+app.use("/api/users/register", signupRouter);
+
+app.use("/api/users/", oauthRouter);
 
 app.use('/home', homeRouter);
 
 app.use('/', landingRouter);
 
 //error handler below
+
+//to allow for page to render due to client-side rendering with react router
+// app.get('/*', function (req, res) {
+//     res.sendFile(path.join(__dirname, "../../public/index.html"), function (err) {
+//         if (err) {
+//             res.status(500).send(err)
+//         }
+//     })
+// })
+
+
 //error handler for improper route
+//change once near deployment
 app.get("*", (req, res) => {
-    res.sendStatus(404);
+    res.redirect('/');
+    // res.sendStatus(404);
 });
+
+
 
 //global error handler 
 app.get((err, req, res, next) => {
