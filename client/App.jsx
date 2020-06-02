@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useRoutes, A } from "hookrouter";
 import Routes from "./router/Routes.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/Navbar/Navbar.jsx";
 
 function App() {
   //pulling in defined routes within Routes.jsx
