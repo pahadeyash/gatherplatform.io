@@ -8,6 +8,8 @@ const passport = require('passport');
 const cookieSession = require('cookie-session');
 
 //load file dependencies
+const loginRouter = require("./routes/login");
+const signupRouter = require("./routes/signup");
 const usersRouter = require("./routes/users");
 const landingRouter = require("./routes/landing");
 require("./config/passport")(passport);
@@ -50,7 +52,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use("/api/users", usersRouter);
+app.use("/api/users/login", loginRouter);
+
+app.use("/api/users/register", signupRouter);
+
+app.use("/api/users/", usersRouter);
 
 app.use('/home', homeRouter);
 
