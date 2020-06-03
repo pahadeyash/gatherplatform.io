@@ -9,8 +9,8 @@ function next(length, current) {
     return (current + 1) % length;
 }
 
-// function threshold(target) {
-//     const width = target.clientWidth;
+// function threshold(e) {
+//     const width = e.clientWidth;
 //     return width / 3;
 // }
 
@@ -71,8 +71,8 @@ function carouselReducer(state, action) {
     }
 }
 
-function swiped(e, dispatch, length, dir, container) {
-    // const t = threshold(e.event.target);
+function swiped(delta, dispatch, length, dir, container) {
+    // const t = threshold(e.target);
     // const d = dir * e.deltaX;
     const t = container.clientWidth * threshold;
     const d = dir * delta;
@@ -90,10 +90,12 @@ function swiped(e, dispatch, length, dir, container) {
     }
 }
 
-//@creating custom hook for carousel
-export const useCarousel = ({ slides, interval = 5000 }) => {
 
-    const slidesPresented = 2;
+//@creating custom hook for carousel
+export const useCarousel = (length, interval, options = {}) => {
+
+    const { slidesPresented = 1 } = options;
+    // const slidesPresented = 3;
     const shadowSlides = 2 * slidesPresented;
     const n = Math.max(1, Math.min(slidesPresented, length));
     const totalWidth = 100 / n;
@@ -127,64 +129,11 @@ export const useCarousel = ({ slides, interval = 5000 }) => {
     //current state of carousel
     // const [current, setCurrent] = React.useState(0);
 
-    // // //distinguish different states of carousel
-    // // const initialCarouselState = {
-    // //     offset: 0,
-    // //     desired: 0,
-    // //     active: 0
-    // // };
-
-    // //using carouselReducer
-    // const [state, dispatch] = useReducer(carouselReducer, initialCarouselState);
-
-
-    // //advanced touch gestures to interact with carousel
-    // const handlers = useSwipeable({
-    //     onSwiping(e) {
-    //         dispatch({
-    //             type: "drag",
-    //             offset: -e.deltaX
-    //         });
-    //     },
-    //     onSwipedLeft(e) {
-    //         const t = threshold(e.event.target);
-
-    //         if (e.deltaX >= t) {
-    //             dispatch({
-    //                 type: "next",
-    //                 length
-    //             });
-    //         } else {
-    //             dispatch({
-    //                 type: "drag",
-    //                 offset: 0
-    //             });
-    //         }
-    //     },
-    //     onSwipedRight(e) {
-    //         const t = threshold(e.event.target);
-
-    //         if (-e.deltaX >= t) {
-    //             dispatch({
-    //                 type: "prev",
-    //                 length
-    //             });
-    //         } else {
-    //             dispatch({
-    //                 type: "drag",
-    //                 offset: 0
-    //             });
-    //         }
-    //     },
-    //     trackMouse: true,
-    //     trackTouch: true
-    // });
-
     //effect hook will allow for carousel pictures to transition
     //auto-rotation feature
     // useEffect(() => {
-    //     const next = (current + 1) % slides.length;
-    //     const id = setTimeout(() => setCurrent(next), time);
+    //     const next = (current + 1) % 4;
+    //     const id = setTimeout(() => setCurrent(next), 300);
     //     return () => clearTimeout(id);
     // }, [current]);
 
@@ -202,8 +151,11 @@ export const useCarousel = ({ slides, interval = 5000 }) => {
 
     const style = {
         transform: 'translateX(0)',
-        width: `500%`,
+        // width: `500%`,
+        width: `${totalWidth * (length + shadowSlides)}%`,
         left: `-${(state.active + 1) * totalWidth}%`,
+        // left: `-${(state.active + 0.5) * totalWidth}%`,
+        // left: `-${(state.active + 1) * totalWidth}%`,
     };
 
     if (state.desired !== state.active) {

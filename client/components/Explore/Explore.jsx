@@ -25,11 +25,14 @@ function Explore() {
         <img></img>
       </div>
 
-      <div id="carousel-container">
-        <Carousel />
+      {/* <div id="carousel-container"> */}
+      <Carousel />
+      {/* </div> */}
+
+      <div id="explore-photo-container">
+        <img></img>
       </div>
 
-      {/* <Slider /> */}
     </div>
 
   );

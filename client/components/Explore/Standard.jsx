@@ -2,7 +2,7 @@ import * as React from 'react';
 import { CarouselContainer, CarouselChild } from './Carousel';
 
 const Carousel = () => (
-    <CarouselContainer interval={1000}>
+    <CarouselContainer interval={5000}>
         <CarouselChild>
             <div
                 className="slide"
@@ -21,12 +21,12 @@ const Carousel = () => (
                 style={{ backgroundImage: `url(https://gatherplatform.s3.us-east-2.amazonaws.com/photo-3.png)` }}
             />
         </CarouselChild>
-        <CarouselChild>
+        {/* <CarouselChild>
             <div
                 className="slide"
                 style={{ backgroundImage: `url(https://gatherplatform.s3.us-east-2.amazonaws.com/photo-4.png)` }}
             />
-        </CarouselChild>
+        </CarouselChild> */}
     </CarouselContainer>
 
     // <CarouselContainer interval={10000}>
