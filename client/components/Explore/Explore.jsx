@@ -1,6 +1,5 @@
 import React from "react";
-import Carousel from "./Carousel";
-import Slider from "./Slider/Slider";
+import Carousel from "./Carousel/Carousel";
 
 function Explore() {
 
@@ -25,9 +24,7 @@ function Explore() {
         <img></img>
       </div>
 
-      {/* <div id="carousel-container"> */}
       <Carousel />
-      {/* </div> */}
 
       <div id="explore-photo-container">
         <img></img>

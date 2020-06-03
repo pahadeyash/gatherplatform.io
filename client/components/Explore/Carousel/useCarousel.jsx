@@ -9,11 +9,6 @@ function next(length, current) {
     return (current + 1) % length;
 }
 
-// function threshold(e) {
-//     const width = e.clientWidth;
-//     return width / 3;
-// }
-
 //@TIMING FOR CAROUSEL
 //transition times we can change
 // const transitionTime = 400;
@@ -126,16 +121,6 @@ export const useCarousel = (length, interval, options = {}) => {
             return ref(container);
         },
     };
-    //current state of carousel
-    // const [current, setCurrent] = React.useState(0);
-
-    //effect hook will allow for carousel pictures to transition
-    //auto-rotation feature
-    // useEffect(() => {
-    //     const next = (current + 1) % 4;
-    //     const id = setTimeout(() => setCurrent(next), 300);
-    //     return () => clearTimeout(id);
-    // }, [current]);
 
     //manage timings between carousels
     useEffect(() => {
@@ -151,11 +136,8 @@ export const useCarousel = (length, interval, options = {}) => {
 
     const style = {
         transform: 'translateX(0)',
-        // width: `500%`,
         width: `${totalWidth * (length + shadowSlides)}%`,
         left: `-${(state.active + 1) * totalWidth}%`,
-        // left: `-${(state.active + 0.5) * totalWidth}%`,
-        // left: `-${(state.active + 1) * totalWidth}%`,
     };
 
     if (state.desired !== state.active) {
@@ -175,38 +157,3 @@ export const useCarousel = (length, interval, options = {}) => {
 
     return [state.active, n => dispatch({ type: 'jump', desired: n }), handlers, style];
 }
-
-// export const slides = [<img src="../../assets/img/photo-1.png" />, <img src="../../assets/img/photo-2.png" />, <img src="../../assets/img/photo-3.png" />];
-//@ACTUAL CAROUSEL COMPONENT TO IMPORT INTO EXPLORE PAGE
-// const Carousel = ({ slides = [<img src="../../assets/img/photo-1.png" />, <img src="../../assets/img/photo-2.png" />, <img src="../../assets/img/photo-3.png" />], interval = 5000 }) => {
-//     // const slides = ['picture1', 'picture2', 'picture3'];
-//     const length = slides.length;
-//     const [active, setActive, handlers, style] = useCarousel(length, interval);
-
-//     return (
-//         length > 0 && (
-//             <div className="carousel">
-//                 <ol className="carousel-indicators">
-//                     {slides.map((_, index) => (
-//                         <li
-//                             onClick={() => setActive(index)}
-//                             key={index}
-//                             className={`${active === index ? "active" : ""}`}
-//                         />
-//                     ))}
-//                 </ol>
-//                 <div className="carousel-content" {...handlers} style={style}>
-//                     <div className="carousel-item">{slides[slides.length - 1]}</div>
-//                     {slides.map((slide, index) => (
-//                         <div className="carousel-item" key={index}>
-//                             {slide}
-//                         </div>
-//                     ))}
-//                     <div className="carousel-item">{slides[0]}</div>
-//                 </div>
-//             </div>
-//         )
-//     );
-// };
-
-// export default Carousel;

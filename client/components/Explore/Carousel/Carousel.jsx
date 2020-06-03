@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { CarouselContainer, CarouselChild } from './CarouselContainer';
 
+//@
+//Carousel component
+//add links to pictures that will be used in carousel below
 const Carousel = () => (
     <CarouselContainer interval={5000}>
         <CarouselChild>
