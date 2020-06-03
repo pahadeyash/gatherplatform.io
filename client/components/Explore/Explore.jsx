@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "./Standard";
+import Carousel from "./Carousel";
 import Slider from "./Slider/Slider";
 
 function Explore() {
