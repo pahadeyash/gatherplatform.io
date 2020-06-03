@@ -1,5 +1,5 @@
 import React from "react";
-import Explore from "../components/Explore.jsx";
+import Explore from "../components/Explore/Explore.jsx";
 import Login from "../components/Login/Login.jsx";
 import Signup from "../components/SignUp/Signup.jsx";
 import Landing from "../components/Landing.jsx";

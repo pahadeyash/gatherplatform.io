@@ -1,10 +1,12 @@
+
 #explore-wrapper {
     background: white;
     height: 100%;
+    padding: 0px 20px;
 }
 
 #search-container {
-    margin: 20px 10px;
+    margin: 20px 0px;
     padding: 10px;
     border: 1px solid $font-color-main;
     border-radius: 10px;
@@ -13,4 +15,95 @@
 #search-bar{
     display: flex;
     flex-direction: row;
+}
+
+#explore-photo-container {
+    height: 50vh;
+    margin: 10px 0px;
+    border: 1px solid $font-color-main;
+    border-radius: 10px;
+}
+
+#carousel-container {
+    height: 30vh;
+}
+
+.slide {
+    // padding: 10px;
+    width: 100vw;
+    height: 500px;
+    max-height: 30vh;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid $font-color-main;
+    border-radius: 10px;
+}
+
+.carousel-indicators{
+    position: absolute;
+    right: 0;
+    bottom: 0.5em;
+    left: 0;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    padding-left: 0;
+    list-style: none;
+    margin: 0 auto;
+}
+
+.carousel-indicator{
+    position: relative;
+    flex: 0 1 auto;
+    width: 1.5em;
+    height: 0.3em;
+    margin: 0 0.3em;
+    background: black;
+    cursor: pointer;
+  
+    &:hover {
+      background: green;
+    }
+  
+    &.active {
+      background: grey;
+      cursor: default;
+    }
+}
+
+.carousel-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-item {
+    width: 100%;
+}
+
+
+#photo1{
+    background: url(https://gatherplatform.s3.us-east-2.amazonaws.com/photo-1.png) no-repeat center center fixed;
+}
+
+#photo2{
+    background: url(https://gatherplatform.s3.us-east-2.amazonaws.com/photo-2.png) no-repeat center center fixed;
+}
+
+#photo2{
+    background: url(https://gatherplatform.s3.us-east-2.amazonaws.com/photo-3.png) no-repeat center center fixed;
 }
