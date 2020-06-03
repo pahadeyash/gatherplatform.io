@@ -1,12 +1,17 @@
 import React, { useState, useEffect, useReducer } from "react";
-import { useSwipeable, Swipeable, SwipeableHandlers, EventData } from 'react-swipeable'
+import {
+  useSwipeable,
+  Swipeable,
+  SwipeableHandlers,
+  EventData,
+} from "react-swipeable";
 
 function previous(length, current) {
-    return (current - 1 + length) % length;
+  return (current - 1 + length) % length;
 }
 
 function next(length, current) {
-    return (current + 1) % length;
+  return (current + 1) % length;
 }
 
 //@TIMING FOR CAROUSEL
@@ -27,133 +32,138 @@ const smooth = `transform ${transitionTime}ms ease`;
 
 //distinguish different states of carousel
 const initialCarouselState = {
-    offset: 0,
-    desired: 0,
-    active: 0
+  offset: 0,
+  desired: 0,
+  active: 0,
 };
 
 //reducer to handle carousel movement
 function carouselReducer(state, action) {
-    switch (action.type) {
-        case "jump":
-            return {
-                ...state,
-                desired: action.desired
-            };
-        case "next":
-            return {
-                ...state,
-                desired: next(action.length, state.active)
-            };
-        case "prev":
-            return {
-                ...state,
-                desired: previous(action.length, state.active)
-            };
-        case "done":
-            return {
-                ...state,
-                offset: NaN,
-                active: state.desired
-            };
-        case "drag":
-            return {
-                ...state,
-                offset: action.offset
-            };
-        default:
-            return state;
-    }
+  switch (action.type) {
+    case "jump":
+      return {
+        ...state,
+        desired: action.desired,
+      };
+    case "next":
+      return {
+        ...state,
+        desired: next(action.length, state.active),
+      };
+    case "prev":
+      return {
+        ...state,
+        desired: previous(action.length, state.active),
+      };
+    case "done":
+      return {
+        ...state,
+        offset: NaN,
+        active: state.desired,
+      };
+    case "drag":
+      return {
+        ...state,
+        offset: action.offset,
+      };
+    default:
+      return state;
+  }
 }
 
 function swiped(delta, dispatch, length, dir, container) {
-    // const t = threshold(e.target);
-    // const d = dir * e.deltaX;
-    const t = container.clientWidth * threshold;
-    const d = dir * delta;
+  // const t = threshold(e.target);
+  // const d = dir * e.deltaX;
+  const t = container.clientWidth * threshold;
+  const d = dir * delta;
 
-    if (d >= t) {
-        dispatch({
-            type: dir > 0 ? 'next' : 'prev',
-            length,
-        });
-    } else {
-        dispatch({
-            type: 'drag',
-            offset: 0,
-        });
-    }
+  if (d >= t) {
+    dispatch({
+      type: dir > 0 ? "next" : "prev",
+      length,
+    });
+  } else {
+    dispatch({
+      type: "drag",
+      offset: 0,
+    });
+  }
 }
-
 
 //@creating custom hook for carousel
 export const useCarousel = (length, interval, options = {}) => {
+  const { slidesPresented = 1 } = options;
+  // const slidesPresented = 3;
+  const shadowSlides = 2 * slidesPresented;
+  const n = Math.max(1, Math.min(slidesPresented, length));
+  const totalWidth = 100 / n;
+  const [state, dispatch] = useReducer(carouselReducer, initialCarouselState);
+  const [container, setContainer] = useState(undefined);
+  const { ref, onMouseDown } = useSwipeable({
+    onSwiping(e) {
+      const sign = e.deltaX > 0 ? -1 : 1;
+      dispatch({
+        type: "drag",
+        offset:
+          sign * Math.min(Math.abs(e.deltaX), limit * container.clientWidth),
+      });
+    },
+    onSwipedLeft(e) {
+      swiped(e.deltaX, dispatch, length, 1, container);
+    },
+    onSwipedRight(e) {
+      swiped(e.deltaX, dispatch, length, -1, container);
+    },
+    trackMouse: true,
+    trackTouch: true,
+  });
 
-    const { slidesPresented = 1 } = options;
-    // const slidesPresented = 3;
-    const shadowSlides = 2 * slidesPresented;
-    const n = Math.max(1, Math.min(slidesPresented, length));
-    const totalWidth = 100 / n;
-    const [state, dispatch] = useReducer(carouselReducer, initialCarouselState);
-    const [container, setContainer] = useState(undefined);
-    const { ref, onMouseDown } = useSwipeable({
-        onSwiping(e) {
-            const sign = e.deltaX > 0 ? -1 : 1;
-            dispatch({
-                type: 'drag',
-                offset: sign * Math.min(Math.abs(e.deltaX), limit * container.clientWidth),
-            });
-        },
-        onSwipedLeft(e) {
-            swiped(e.deltaX, dispatch, length, 1, container);
-        },
-        onSwipedRight(e) {
-            swiped(e.deltaX, dispatch, length, -1, container);
-        },
-        trackMouse: true,
-        trackTouch: true,
-    });
+  const handlers = {
+    onMouseDown,
+    ref(container) {
+      setContainer(container && container.firstElementChild);
+      return ref(container);
+    },
+  };
 
-    const handlers = {
-        onMouseDown,
-        ref(container) {
-            setContainer(container && container.firstElementChild);
-            return ref(container);
-        },
-    };
+  //manage timings between carousels
+  useEffect(() => {
+    const id = setTimeout(() => dispatch({ type: "next", length }), interval);
+    return () => clearTimeout(id);
+  }, [state.offset, state.active]);
 
-    //manage timings between carousels
-    useEffect(() => {
-        const id = setTimeout(() => dispatch({ type: "next", length }), interval);
-        return () => clearTimeout(id);
-    }, [state.offset, state.active]);
+  //continue from prev
+  useEffect(() => {
+    const id = setTimeout(() => dispatch({ type: "done" }), transitionTime);
+    return () => clearTimeout(id);
+  }, [state.desired]);
 
-    //continue from prev
-    useEffect(() => {
-        const id = setTimeout(() => dispatch({ type: "done" }), transitionTime);
-        return () => clearTimeout(id);
-    }, [state.desired]);
+  const style = {
+    transform: "translateX(0)",
+    width: `${totalWidth * (length + shadowSlides)}%`,
+    left: `-${(state.active + 1.2) * totalWidth}%`,
+  };
 
-    const style = {
-        transform: 'translateX(0)',
-        width: `${totalWidth * (length + shadowSlides)}%`,
-        left: `-${(state.active + 1) * totalWidth}%`,
-    };
-
-    if (state.desired !== state.active) {
-        const dist = Math.abs(state.active - state.desired);
-        const pref = Math.sign(state.offset || 0);
-        const dir = (dist > length / 2 ? 1 : -1) * Math.sign(state.desired - state.active);
-        const shift = (totalWidth * (pref || dir)) / (length + shadowSlides);
-        style.transition = smooth;
-        style.transform = `translateX(${shift}%)`;
-    } else if (!isNaN(state.offset)) {
-        if (state.offset !== 0) {
-            style.transform = `translateX(${state.offset}px)`;
-        } else {
-            style.transition = elastic;
-        }
+  if (state.desired !== state.active) {
+    const dist = Math.abs(state.active - state.desired);
+    const pref = Math.sign(state.offset || 0);
+    const dir =
+      (dist > length / 2 ? 1 : -1) * Math.sign(state.desired - state.active);
+    const shift = (totalWidth * (pref || dir)) / (length + shadowSlides);
+    style.transition = smooth;
+    style.transform = `translateX(${shift}%)`;
+  } else if (!isNaN(state.offset)) {
+    if (state.offset !== 0) {
+      style.transform = `translateX(${state.offset}px)`;
+    } else {
+      style.transition = elastic;
     }
+  }
 
-    return [state.active, n => dispatch({ type: 'jump', desired: n }), handlers, style];
-}
+  return [
+    state.active,
+    (n) => dispatch({ type: "jump", desired: n }),
+    handlers,
+    style,
+  ];
+};

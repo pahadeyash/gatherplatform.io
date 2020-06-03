@@ -36,12 +36,12 @@ const Navbar = () => {
             <div id="nav-selection-container">
 
                 <A href="/" className="nav-selection" >
-                    Explore
-            </A>
+                    <div id="nav-button"> Explore </div>
+                </A>
 
                 <A href="/landing" className="nav-selection"  >
-                    Login
-            </A>
+                    <div id="nav-button"> Login </div>
+                </A>
 
             </div>
         </div>

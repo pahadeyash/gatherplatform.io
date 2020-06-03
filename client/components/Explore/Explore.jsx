@@ -21,13 +21,13 @@ function Explore() {
       </div>
 
       <div id="explore-photo-container">
-        <img></img>
+
       </div>
 
       <Carousel />
 
       <div id="explore-photo-container">
-        <img></img>
+
       </div>
 
     </div>
