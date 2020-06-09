@@ -31,19 +31,34 @@ const Navbar = () => {
     const shadowStyle = shouldShowShadow ? 'shadow' : '';
     const hiddenStyle = shouldHideHeader ? 'hidden' : '';
 
+    useEffect(() => {
+
+    }, [isLoggedIn])
+
 
 
     return (
         <div className={`navbar-wrapper ${shadowStyle} ${hiddenStyle}`}>
             <div id="nav-selection-container">
+                {isLoggedIn ? (
+                    <A href="/" className="nav-selection" >
+                        <div id="nav-button"> Search </div>
+                    </A>
+                ) : (
+                    <A href="/" className="nav-selection" >
+                        <div id="nav-button"> Explore </div>
+                    </A>
+                )}
 
-                <A href="/" className="nav-selection" >
-                    <div id="nav-button"> {isLoggedIn ? 'Search' : 'Explore'} </div>
-                </A>
-
-                <A href="/landing" className="nav-selection"  >
-                    <div id="nav-button"> {isLoggedIn ? 'Profile': 'Login'} </div>
-                </A>
+                {isLoggedIn ? (
+                    <A href="/" className="nav-selection" >
+                        <div id="nav-button"> Profile </div>
+                    </A>
+                ) : (
+                    <A href="/landing" className="nav-selection" >
+                        <div id="nav-button"> Login </div>
+                    </A>
+                )}
 
             </div>
         </div>
