@@ -1,57 +1,55 @@
 #login-wrapper {
-    margin: 36px 24px 24px 24px;
+  margin: 36px 24px 24px 24px;
 }
 
 #login-header {
-    padding: 20% 0 20% 0;
+  padding: 20% 0 20% 0;
 }
 
 #input-header-container {
-    padding: 7px 0;
+  padding: 7px 0;
 }
-
 
 #login-button {
-    color: white;
-    background: $font-color-main;
-    width: 100%;
-    border-radius: 5px;
-    height: 40px;
-    font-size: 14px;
-    border: 0.5px solid white;
+  color: white;
+  background: $font-color-main;
+  width: 100%;
+  border-radius: 5px;
+  height: 40px;
+  font-size: 14px;
+  border: 0.5px solid white;
 }
 
-#input-field-container{
-    border-bottom: 1px solid $font-color-main;
-    margin-bottom: 7px;
+#input-field-container {
+  border-bottom: 1px solid $font-color-main;
+  margin-bottom: 7px;
 }
 
-#single-button-container{
-    padding: 10px 0;
+#single-button-container {
+  padding: 10px 0;
 }
 
 #register-section {
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    padding: 10px 30%;
-    font-size: 10px;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding: 10px 30%;
+  font-size: 10px;
 }
 
 .input-field {
-    width: 100%;
+  width: 100%;
 }
 
 #or-container {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
-#or-text{
-    overflow: hidden;
-    text-align: center;
-    opacity: 0.6;
+#or-text {
+  overflow: hidden;
+  text-align: center;
+  opacity: 0.6;
 }
-
 
 #or-text:before,
 #or-text:after {
@@ -76,58 +74,51 @@
 }
 
 #oauth-container {
-    display: flex;
-    flex-direction: row;
-    padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
 }
 
 #oauth-button {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid black;
-    border-radius: 5px;
-    height: 48px;
-    width: 40%;
-    text-align: center;
-    margin: auto auto;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  border-radius: 5px;
+  height: 48px;
+  width: 40%;
+  text-align: center;
+  margin: auto auto;
 }
 
-#oauth-google-button {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 5px;
-    height: 48px;
-    width: 40%;
-    text-align: center;
-    margin: auto auto;
+#google-logo {
+  height: 35px;
+  margin: auto 0 auto 5px;
 }
 
-#oauth-facebook-button {
-    display: flex;
-    flex-direction: row;
-    border: 1px solid #3B5998;
-    box-sizing: border-box;
-    border-radius: 5px;
-    height: 48px;
-    width: 40%;
-    text-align: center;
-    margin: auto auto;
-    background-color: #3B5998;
+#google-text {
+  text-decoration: none;
+  color: black;
+}
+
+#facebook-logo {
+  height: 35px;
+  /* width: auto; */
+  margin: auto auto 0 auto;
 }
 
 #facebook-link {
-    font-family: Effra;
-    font-style: normal;
-    font-weight: normal;
-    color: #FFFFFF;
-    font-size: 18px;
-    line-height: 21px;
+  font-family: Effra;
+  font-style: normal;
+  font-weight: normal;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 21px;
 }
 
-
-
 #alternate-link-text {
-    margin: auto auto;
+  margin: auto auto;
+}
+
+.facebook {
+  background-color: #3b5998;
 }
