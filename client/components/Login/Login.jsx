@@ -65,15 +65,14 @@ function Login() {
       </div>
 
       <div id="oauth-container">
-
-        <div id="oauth-button">
+        <div id="oauth-google-button">
           <a href="/api/users/google" className="nav-selection"  >
             Google
           </a>
         </div>
 
-        <div id="oauth-button">
-          <a href="/api/users/facebook" className="nav-selection"  >
+        <div id="oauth-facebook-button">
+          <a id="facebook-link" href="/api/users/facebook" className="nav-selection">
             Facebook
           </a>
         </div>
@@ -81,7 +80,6 @@ function Login() {
       </div>
 
       <div id="register-section">
-
         <div id="alternate-link-text">
           Don't have an account?
 

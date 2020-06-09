@@ -117,8 +117,8 @@ function Signup() {
                     </a>
                 </div>
 
-                <div id="oauth-button">
-                    <a href="/api/users/facebook" className="nav-selection"  >
+                <div id="oauth-facebook-button">
+                    <a id = "facebook-link" href="/api/users/facebook" className="nav-selection"  >
                         Facebook
                     </a>
                 </div>
@@ -126,7 +126,6 @@ function Signup() {
             </div>
 
         <div id="register-section">
-        
             <div id="alternate-link-text">
                 Have an account? 
   
