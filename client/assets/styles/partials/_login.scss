@@ -92,6 +92,42 @@
     margin: auto auto;
 }
 
+#oauth-google-button {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 48px;
+    width: 40%;
+    text-align: center;
+    margin: auto auto;
+}
+
+#oauth-facebook-button {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #3B5998;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 48px;
+    width: 40%;
+    text-align: center;
+    margin: auto auto;
+    background-color: #3B5998;
+}
+
+#facebook-link {
+    font-family: Effra;
+    font-style: normal;
+    font-weight: normal;
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+
+
 #alternate-link-text {
     margin: auto auto;
 }
