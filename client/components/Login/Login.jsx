@@ -91,7 +91,9 @@ function Login() {
       <div id="register-section">
         <div id="alternate-link-text">
           Don't have an account?
-          <A href="/api/users/register">Sign Up</A>
+          <A id="a-link" href="/api/users/register">
+            &nbsp; Sign Up
+          </A>
         </div>
       </div>
     </div>

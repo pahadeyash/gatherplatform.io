@@ -130,7 +130,9 @@ function Signup() {
       <div id="register-section">
         <div id="alternate-link-text">
           Have an account?
-          <A href="/api/users/login">Log in</A>
+          <A id="a-link" href="/api/users/login">
+            &nbsp; Log in
+          </A>
         </div>
       </div>
     </div>
