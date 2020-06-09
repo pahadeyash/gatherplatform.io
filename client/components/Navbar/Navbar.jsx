@@ -11,6 +11,7 @@ const Navbar = () => {
     // state to manage hide/show on scroll navbar
     const [shouldHideHeader, setShouldHideHeader] = useState(false);
     const [shouldShowShadow, setShouldShowShadow] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const MINIMUM_SCROLL = 80;
     const TIMEOUT_DELAY = 400;
@@ -31,16 +32,17 @@ const Navbar = () => {
     const hiddenStyle = shouldHideHeader ? 'hidden' : '';
 
 
+
     return (
         <div className={`navbar-wrapper ${shadowStyle} ${hiddenStyle}`}>
             <div id="nav-selection-container">
 
                 <A href="/" className="nav-selection" >
-                    <div id="nav-button"> Explore </div>
+                    <div id="nav-button"> {isLoggedIn ? 'Search' : 'Explore'} </div>
                 </A>
 
                 <A href="/landing" className="nav-selection"  >
-                    <div id="nav-button"> Login </div>
+                    <div id="nav-button"> {isLoggedIn ? 'Profile': 'Login'} </div>
                 </A>
 
             </div>
